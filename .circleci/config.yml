@@ -18,15 +18,17 @@ jobs:
           command: |
             sudo apt-get update && \
             sudo apt-get install -y expect && \
-            wget https://www.codeandweb.com/download/texturepacker/5.1.0/TexturePacker-5.1.0-ubuntu64.deb && \
-            sudo dpkg -i TexturePacker-5.1.0-ubuntu64.deb && \
+            mkdir -p tmp && \
+            pushd tmp && \
+              wget https://www.codeandweb.com/download/texturepacker/5.1.0/TexturePacker-5.1.0-ubuntu64.deb && \
+              sudo dpkg -i TexturePacker-5.1.0-ubuntu64.deb && \
+            popd && \
             expect -c "\
                 set timeout 20;\
                 spawn TexturePacker --version;\
                 expect \"Please type 'agree' if you agree with the terms above:\";\
                 send \"agree\n\";\
                 expect eof;" && \
-            chmod u+x pack.sh && \
             ./pack.sh
       - run: git config user.email "yasshi2525+circleci@users.noreply.github.com"
       - run: git config user.name "yasshi2525+circleci"
