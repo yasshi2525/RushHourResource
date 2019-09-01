@@ -1,0 +1,20 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          paths: [node_modules]
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run: npm run build
+      - run: npm run run 
+      - run: git config user.email "yasshi2525+circleci@users.noreply.github.com"
+      - run: git config user.name "yasshi2525+circleci"
+      - run: git add dist
+      - run: git commit -m 'add spritesheet'
+      - run: git push origin master;
