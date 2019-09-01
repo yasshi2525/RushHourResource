@@ -2,9 +2,8 @@
 
 pushd "$(dirname "$0")" > /dev/null
     outdir="$PWD/dist"
+    rm -rf "$outdir"
     mkdir -p "$outdir"
-    rm -rf "$outdir/*"
-    ls -la "$outdir"
 
     pushd "build/img" > /dev/null
         find -mindepth 2 -type d  | while read line; do
