@@ -5,7 +5,7 @@ const baseUrl = "file:///" + __dirname + "/build/index.html";
 const baseSavedPath = __dirname + "/build/img";
 
 const round = 240;
-const types = ["anchor", "cursor","rail_node", "rail_edge"];
+const types = ["anchor", "cursor","rail_node", "rail_edge", "residence"];
 const resolutions = [1, 2, 3, 4];
 
 (async () => {
