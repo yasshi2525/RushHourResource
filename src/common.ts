@@ -1,4 +1,14 @@
+import * as PIXI from "pixi.js";
 import { GlowFilter, OutlineFilter, DropShadowFilter, DropShadowFilterOptions } from "pixi-filters";
+
+export const load = (img: string) => {
+    let resource = PIXI.resources.autoDetectResource(img);
+    return new Promise<PIXI.BaseTexture>((resolve, reject) => 
+        new PIXI.BaseTexture()
+        .on("loaded", (b: PIXI.BaseTexture) => resolve(b))
+        .on("error", (_: PIXI.BaseTexture, err: ErrorEvent) =>  reject(err))
+        .setResource(resource));
+}
 
 const round = 240;
 
