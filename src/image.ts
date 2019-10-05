@@ -1,8 +1,20 @@
 import * as PIXI from "pixi.js";
-import { load as _load, generateOutline, generateFlash } from "./common";
-import * as img from "./img/residence.png"
+import { generateOutline, generateFlash } from "./common";
+import * as residence from "./img/residence.png"
+import * as company from "./img/company.png"
 
-export const load = () => _load(img);
+const load = (img: string) => {
+    let resource = PIXI.resources.autoDetectResource(img);
+    return new Promise<PIXI.BaseTexture>((resolve, reject) => 
+        new PIXI.BaseTexture()
+        .on("loaded", (b: PIXI.BaseTexture) => resolve(b))
+        .on("error", (_: PIXI.BaseTexture, err: ErrorEvent) =>  reject(err))
+        .setResource(resource));
+}
+
+
+export const loadRsidence = () => load(residence);
+export const loadCompany = () => load(company);
 
 export function generate(base: PIXI.BaseTexture, resolution: number, offset: number) {
     let container = new PIXI.Container();

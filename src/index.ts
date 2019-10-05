@@ -3,9 +3,9 @@ import cursor from "./cursor";
 import anchor from "./anchor";
 import rail_node from "./rail_node";
 import rail_edge from "./rail_edge";
-import * as residence from "./residence";
+import * as image from "./image";
 
-let images = ["residence"]
+let images = ["residence", "company"]
 
 let args = new URL(document.URL);
 let type = args.searchParams.get("type");
@@ -34,9 +34,15 @@ if (type !== null && images.includes(type)) {
     window.addEventListener("load", () => {
         switch(type) {
             case "residence":
-                residence.load().then(base => {
-                    register(base, residence.generate);
+                image.loadRsidence().then(base => {
+                    register(base, image.generate);
                 }).catch(err => console.error(err));
+                break;
+            case "company":
+                image.loadCompany().then(base => {
+                    register(base, image.generate);
+                }).catch(err => console.error(err));
+                break;   
         }
     });
 } else {
