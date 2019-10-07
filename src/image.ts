@@ -2,6 +2,8 @@ import * as PIXI from "pixi.js";
 import { generateOutline, generateFlash } from "./common";
 import * as residence from "./img/residence.png"
 import * as company from "./img/company.png"
+import * as station from "./img/station.png"
+import * as train from "./img/train.png"
 
 const load = (img: string) => {
     let resource = PIXI.resources.autoDetectResource(img);
@@ -15,6 +17,8 @@ const load = (img: string) => {
 
 export const loadRsidence = () => load(residence);
 export const loadCompany = () => load(company);
+export const loadStation = () => load(station);
+export const loadTrain = () => load(train);
 
 export function generate(base: PIXI.BaseTexture, resolution: number, offset: number) {
     let container = new PIXI.Container();

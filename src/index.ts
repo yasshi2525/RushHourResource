@@ -42,6 +42,16 @@ if (type !== null && images.includes(type)) {
                 image.loadCompany().then(base => {
                     register(base, image.generate);
                 }).catch(err => console.error(err));
+                break;
+            case "station":
+                image.loadStation().then(base => {
+                    register(base, image.generate);
+                }).catch(err => console.error(err));
+                break;
+            case "train":
+                image.loadTrain().then(base => {
+                    register(base, image.generate);
+                }).catch(err => console.error(err));
                 break;   
         }
     });
