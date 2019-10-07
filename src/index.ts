@@ -5,7 +5,7 @@ import rail_node from "./rail_node";
 import rail_edge from "./rail_edge";
 import * as image from "./image";
 
-let images = ["residence", "company"]
+let images = ["residence", "company", "station", "train"]
 
 let args = new URL(document.URL);
 let type = args.searchParams.get("type");
