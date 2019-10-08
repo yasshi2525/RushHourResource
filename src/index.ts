@@ -5,7 +5,7 @@ import rail_node from "./rail_node";
 import rail_edge from "./rail_edge";
 import * as image from "./image";
 
-let images = ["residence", "company", "station", "train"]
+let images = ["residence", "company", "station", "train", "destroy"]
 
 let args = new URL(document.URL);
 let type = args.searchParams.get("type");
@@ -52,7 +52,12 @@ if (type !== null && images.includes(type)) {
                 image.loadTrain().then(base => {
                     register(base, image.generate);
                 }).catch(err => console.error(err));
-                break;   
+                break;  
+            case "destroy":
+                image.loadDestroy().then(base => {
+                    register(base, image.generate);
+                }).catch(err => console.error(err));
+                break;  
         }
     });
 } else {
