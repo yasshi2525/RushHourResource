@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import color from "./color";
 import cursor from "./cursor";
 import anchor from "./anchor";
 import rail_node from "./rail_node";
@@ -59,6 +60,13 @@ if (type !== null && images.includes(type)) {
                 }).catch(err => console.error(err));
                 break;  
         }
+    });
+} else if (type == "color") {
+    window.addEventListener("load", () => {
+        let anchorElm = document.createElement("a");
+        anchorElm.id = `image`;
+        anchorElm.href = color(resolution);
+        document.body.appendChild(anchorElm);
     });
 } else {
     window.addEventListener("load", () => {
