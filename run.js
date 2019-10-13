@@ -3,7 +3,7 @@ const fs = require("fs");
 
 const baseUrl = "file:///" + __dirname + "/build/index.html";
 const baseSavedPath = __dirname + "/build/img";
-const distPath = __dirname + "/dist";
+const distPath = __dirname + "/build/dist";
 
 const round = 240;
 const types = ["color", "anchor", "cursor","rail_node", "rail_edge", "residence", "company", "station", "train", "destroy"];
@@ -12,6 +12,10 @@ const resolutions = [1, 2, 3, 4];
 (async () => {
     let browser = null;
     try {
+        if (!fs.existsSync(distPath)) {
+            fs.mkdirSync(distPath, { recursive: true });
+        }
+
         const args = puppeteer.defaultArgs().filter(arg => arg !== "--disable-gpu");
         args.push("--use-gl=desktop");
         args.push("--no-sandbox");

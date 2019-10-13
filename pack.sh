@@ -22,4 +22,5 @@ pushd "$(dirname "$0")" > /dev/null
         done
     popd > /dev/null
 
+    cp -rT "build/dist" "$outdir"
 popd > /dev/null

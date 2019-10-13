@@ -62,4 +62,5 @@ typings/
 
 build/img
 build/js
+build/dist
 tmp
